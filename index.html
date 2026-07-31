@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            height: 500vh;
+            background: black;
+        }
+
+        .container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <video id="video" muted playsinline preload="auto">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        const video = document.getElementById("video");
+
+        video.addEventListener("loadedmetadata", () => {
+            video.pause();
+
+            function update() {
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = window.scrollY / maxScroll;
+
+                video.currentTime = progress * video.duration;
+
+                requestAnimationFrame(update);
+            }
+
+            update();
+        });
+    </script>
+
+</body>
+
+</html>
