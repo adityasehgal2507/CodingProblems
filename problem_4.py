@@ -10,7 +10,7 @@ class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         size = (len(nums1) + len(nums2))
         i1, i2 = 0, 0
-        while i1 + i2 < (size//2) - (size%2):
+        while i1 + i2 < (size//2) - (size%2) - 1:
             if nums1[i1] > nums2[i2]:
                 i2 += 1
             else:
@@ -21,7 +21,10 @@ class Solution:
         else:
             return (nums1[i1] + nums2[i2]) * 0.5
 
-Solution().findMedianSortedArrays(
-    [1, 3],
-    [2]
-)
+print(Solution().findMedianSortedArrays(
+    [1, 2], [3, 4]
+))
+
+print(Solution().findMedianSortedArrays(
+    [1, 3], [2]
+))
