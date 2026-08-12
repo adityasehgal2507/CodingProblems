@@ -21,8 +21,8 @@ https://leetcode.com/problems/integer-to-roman/
 class Solution:
     def intToRoman(self, num: int) -> str:
         sol = ""
-        one = {0: 'I', 1: 'X', 2: 'C', 3: 'M'}
-        five = {0: 'V', 1: 'L', 2: 'D'}
+        one = {0: 'I', 1: 'X', 2: 'C', 3: 'M', 4: 'X\''}
+        five = {0: 'V', 1: 'L', 2: 'D', 3: 'V\''}
         size = len(str(num))
         for i, digit in enumerate([int(x) for x in str(num)]):
             place = size - i - 1
@@ -38,4 +38,4 @@ class Solution:
 
         return sol
 
-print(Solution().intToRoman(1854))
+print(Solution().intToRoman(15854))
